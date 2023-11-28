@@ -37,12 +37,12 @@ public class Movement : MonoBehaviour
                 animator.SetBool("isMoving", true);
                 //set animation with up, down, left, right
                 animator.SetFloat("Horizontal", direction.x);
-                animator.SetFloat("Verticla", direction.y);
+                animator.SetFloat("Vertical", direction.y);
             }
-        }
-        else
-        {
-            animator.SetBool("isMoving", false);
+            else
+            {
+                animator.SetBool("isMoving", false);
+            }
         }
     }
 }

@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557678d9582000a498dd9f44ffe1cd0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   animator: {fileID: 719692410}
 --- !u!4 &1795719441
 Transform:
