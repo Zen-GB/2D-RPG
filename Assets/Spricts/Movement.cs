@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed;
+    public float speed = 2;
     public Animator animator;
+    private Vector3 direction;
 
     // get input from player
     //apply in sprites
@@ -17,14 +18,18 @@ public class Movement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical"); 
 
         //set vector with variable
-        Vector3 direction = new Vector3(horizontal, vertical);
+        direction = new Vector3(horizontal, vertical, 0);
 
         //set up animation
         AnimateMovement(direction);
-
-        //set vector to tranform position
-        transform.position += direction * speed * Time.deltaTime;
         
+    }
+
+    private void FixedUpdate()
+    {
+        //move plaayer
+        transform.position += direction * speed * Time.deltaTime;
+
     }
 
     void AnimateMovement(Vector3 direction)
