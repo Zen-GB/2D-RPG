@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Collectable;
 
+[System.Serializable]
 public class Inventory
 {
+    [System.Serializable]
     public class Slot
     {
         public CollectableType type;
@@ -12,8 +15,24 @@ public class Inventory
 
         public Slot ()
         {
+            type = CollectableType.NONE;
             count = 0;
             maxAllowed = 99;
+        }
+
+        public bool CanAddItem ()
+        {
+            if (count < maxAllowed)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void AddItem (CollectableType type)
+        {
+            this.type = type;
+            count++;
         }
     }
 
@@ -29,4 +48,24 @@ public class Inventory
         }
     }
 
+    public void Add(CollectableType typeToAdd)
+    {
+        foreach (Slot slot in slots)
+        {
+            if (slot.type == typeToAdd && slot.CanAddItem())
+            {
+                slot.AddItem (typeToAdd);
+                return;
+            }
+        }
+
+        foreach (Slot slot in slots)
+        {
+            if (slot.type == CollectableType.NONE)
+            {
+                slot.AddItem (typeToAdd);
+                return;
+            }
+        }
+    }
 }

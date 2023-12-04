@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
 
         //set vector with variable
         direction = new Vector3(horizontal, vertical, 0);
+        direction.Normalize();
 
         //set up animation
         AnimateMovement(direction);
