@@ -12,7 +12,10 @@ public class Inventory
         public CollectableType type;
         public int count;
         public int maxAllowed;
+        public string name;
+        public string description;
 
+        //create a slot for collectable
         public Slot ()
         {
             type = CollectableType.NONE;
@@ -20,6 +23,7 @@ public class Inventory
             maxAllowed = 99;
         }
 
+        //check if collectable < max = true, else = false
         public bool CanAddItem ()
         {
             if (count < maxAllowed)
@@ -29,6 +33,7 @@ public class Inventory
             return false;
         }
 
+        //function add item
         public void AddItem (CollectableType type)
         {
             this.type = type;
@@ -36,6 +41,7 @@ public class Inventory
         }
     }
 
+    //create list name Slot
     public List<Slot> slots = new List<Slot>();
 
     //add slot to inventory
@@ -43,6 +49,7 @@ public class Inventory
     {
         for (int i = 0; i < numSlots; i++)
         {
+            //use for to create new slot (in class Player, Inventory (21), so list have 21 slot in inventory.
             Slot slot = new Slot ();
             slots.Add(slot);
         }
@@ -50,6 +57,7 @@ public class Inventory
 
     public void Add(CollectableType typeToAdd)
     {
+        //In list stack Slot, if collectable have the same type and function CanAddItem is true, item will add into Inventory with 1 slot 
         foreach (Slot slot in slots)
         {
             if (slot.type == typeToAdd && slot.CanAddItem())
@@ -58,7 +66,7 @@ public class Inventory
                 return;
             }
         }
-
+        //In list stack Slot, if collectable is new type, item will add into new slot in Inventory
         foreach (Slot slot in slots)
         {
             if (slot.type == CollectableType.NONE)

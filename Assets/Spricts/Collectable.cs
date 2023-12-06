@@ -19,6 +19,6 @@ public class Collectable : MonoBehaviour
 
     public enum CollectableType
     {
-        NONE, CARROT_SEED
+        NONE, CARROT_SEED, STRAWBERRY_SEED, CORN_SEED
     }
 }
